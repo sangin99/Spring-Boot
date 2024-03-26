@@ -23,6 +23,6 @@ public class BasicServiceImplement implements BasicService {
 	@Override
 	public String getApple() {
         return "Get Mapping 으로 만든 메서드";
-	}
+    }
     
 }
