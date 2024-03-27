@@ -21,9 +21,9 @@ import lombok.Setter;
 @AllArgsConstructor
 
 // @Entity : 
-// - 해당 클래스를 Entity 클래스로 등록하는 어느테이션
+// - 해당 클래스를 Entity 클래스로 등록하는 어노테이션
 // - JPA 에서 데이터 관리를 위한 주된 객체
-// - name 속성 : Entity 클래스의 이름을 지정
+// - name 속성 : Entity 클래스의 이름을 지정    
 @Entity(name="student")  // Java 클래스를 JPA Entity로 표시하여 해당 클래스를 데이터베이스의 테이블과 매핑할 수 있게한다
 // @Table : 
 // - 해당 Entity 클래스를 RDBMS 의 어떤 테이블과 매핑할지 지정하는 어노테이션
