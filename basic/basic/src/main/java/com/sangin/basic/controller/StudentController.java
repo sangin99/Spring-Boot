@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sangin.basic.dto.request.student.PatchStudentRequestDto;
 import com.sangin.basic.dto.request.student.PostStudentRequestDto;
 import com.sangin.basic.service.StudentService;
 
@@ -34,22 +35,27 @@ public class StudentController {
 
     // UPDATE
     @PatchMapping ("/")
-    public ResponseEntity<?> patchStudent () {
-        return null;
+    public ResponseEntity<String> patchStudent (
+        @RequestBody @Valid PatchStudentRequestDto requestBody
+    ) {
+        ResponseEntity<String> response = studentService.patchStudent(requestBody);
+        return response;
     }
 
     // DELETE
-    @DeleteMapping ("/{studentNumber}")
-    public ResponseEntity<?> deleteStudent (
+    @DeleteMapping("/{studentNumber}")
+    public ResponseEntity<String> deleteStudent(
         @PathVariable("studentNumber") Integer studentNumber
     ) {
-        return null;
+        ResponseEntity<String> response = studentService.deleteStudent(studentNumber);
+        return response;
     }
     
-}
+}  
 
 
-// body O : GET , DELETE
-// body X : POST , PATCH , PUT
+// requestBody X : GET , DELETE  ※ URL 로 데이터를 전송해줘야한다
+// requestBody O : POST , PATCH , PUT
 
-// @Valid : PostStudentRequestDto 에 작업한 것들을 응답받도록 만든다
+// @Valid : PostStudentRequestDto 에 작업한 것들을 응답받도록 만든다 
+//          유효성 검사를 수행하도록 한다
