@@ -80,7 +80,7 @@ extends JpaRepository<StudentEntity, Integer> {
     List<StudentEntity> getStudent2(Integer studentNumber, Integer age);
 
     // 2. Native SQL :
-    // - 현재 사용하고 있는 RDBMS의 SQL문법을 그래도 따르는 방식   
+    // - 현재 사용하고 있는 RDBMS의 SQL문법을 그대로 따르는 방식   
     @Query (
         // value="SELECT * FROM student WHERE student_number = ?1 AND age > ?2" ,   //! . ?1 : 첫번째 매개변수에 넣겠다(studentNumber) / ?2 : 두번째 매개변수에 넣겠다 (age)
         value = 
@@ -99,6 +99,7 @@ extends JpaRepository<StudentEntity, Integer> {
 
     //! Q. student_number 와 studentNumber 가 다르다
     //! A. SQL문 value에 as 를 사용한다 / 연결되는데에 있어 띄어쓰기 ※주의※
+
 
     //todo > 다른 예시 
     @Query (
@@ -120,5 +121,5 @@ extends JpaRepository<StudentEntity, Integer> {
         @Param("age") Integer age
         // @Param : student_number , age 값을 studentNumber , age 에 넣겠다
     );
-    
+
 }
