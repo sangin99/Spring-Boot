@@ -1,0 +1,7 @@
+CRUD
+
+CREATE 	: 1~2
+READ    : 엄청 많이 쓰임
+UPDATE  : 1~컬럼
+DELETE  : 1~2
+
