@@ -2,6 +2,7 @@ package com.sangin.basic.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sangin.basic.entity.StudentEntity;
@@ -99,5 +100,25 @@ extends JpaRepository<StudentEntity, Integer> {
     //! Q. student_number 와 studentNumber 가 다르다
     //! A. SQL문 value에 as 를 사용한다 / 연결되는데에 있어 띄어쓰기 ※주의※
 
-
+    //todo > 다른 예시 
+    @Query (
+        // value="SELECT * FROM student WHERE student_number = ?1 AND age > ?2" ,   //! . ?1 : 첫번째 매개변수에 넣겠다(studentNumber) / ?2 : 두번째 매개변수에 넣겠다 (age)
+        value = 
+        "SELECT " +
+            "student_number AS studentNumber, " +
+            "name, " +
+            "age, " +
+            "address, " +
+            "graduation, " +
+        "FROM student " +
+        "WHERE student_number = :student_number " +
+        "AND age > :age " ,
+        nativeQuery=true
+    )
+    List<StudentEntity> getStudent3(
+        @Param("student_number") Integer studentNumber, 
+        @Param("age") Integer age
+        // @Param : student_number , age 값을 studentNumber , age 에 넣겠다
+    );
+    
 }
