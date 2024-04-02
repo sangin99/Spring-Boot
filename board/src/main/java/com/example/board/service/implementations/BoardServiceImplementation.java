@@ -44,6 +44,5 @@ public class BoardServiceImplementation implements BoardService {
         // 원래 이 코드를 써야하는데, ResponseDto 파일로 미리 작업하고 .가져온다
         // GetLatestListResponseDto body = new GetLatestListResponseDto(latestList);
         // return ResponseEntity.status(HttpStatus.OK).body(body);
-  
     }
 }
