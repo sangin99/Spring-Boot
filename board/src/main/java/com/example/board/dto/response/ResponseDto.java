@@ -21,4 +21,15 @@ public class ResponseDto {
         ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
     }
+
+    public static ResponseEntity<ResponseDto> notExistBoard() {
+        ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_BOARD, ResponseMessage.NOT_EXIST_BOARD);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
+    }
+
+    public static ResponseEntity<ResponseDto> signInFail () {
+        ResponseDto body = new ResponseDto(ResponseCode.SIGN_IN_FAIL,ResponseMessage.SIGN_IN_FAIL);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
+    }
+
 }
