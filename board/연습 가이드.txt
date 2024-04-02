@@ -28,3 +28,4 @@ base package (@SpringBootApplication 이 걸려있는 곳) > 이름대로 새 �
 
 7번
 >Entity 와 Repository 에 새 파일을 만들어서 작성 
+>Controller 과 service 에 새 파일을 만들어서 작성
