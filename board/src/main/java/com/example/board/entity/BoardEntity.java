@@ -17,6 +17,7 @@ import lombok.Setter;
 @Table(name="board")
 public class BoardEntity {
     @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer board_number;
     private String title;
