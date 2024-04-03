@@ -32,7 +32,7 @@ public class UserServiceImplementation implements UserService {
             // 1) false 이면 존재하지 않는 유저 응답처리 x
             // 2) null 이면 존재하지 않는 유저 응답처리
             if (userEntity == null) return ResponseDto.notExistUser();        
-                    //? 지금처럼 안에 넣는 방법 말고 다른 방법은 `UserEntity userEntity = null`로 try{} 밖으로 뺴는 것이다
+                //? 지금처럼 안에 넣는 방법 말고 다른 방법은 `UserEntity userEntity = null`로 try{} 밖으로 뺴는 것이다
 
             // 3. 조회 결과 데이터를 성공 응답
             // String nickname = userEntity.getNickname();
