@@ -38,3 +38,11 @@ base package (@SpringBootApplication 이 걸려있는 곳) > 이름대로 새 �
 1. 해당 API ResponseDto 생성
 2. Service Interface 에 메서드 생성
 3. Controller 에 해당 API end point 메서드 작성
+
+====================================================
+04.03 _ 16:50
+SignUpRequestDto / ResponseDto
+
+-> AuthService - singUp (dto)
+-> AuthController - SignUp (requestBody)
+만들어보기
