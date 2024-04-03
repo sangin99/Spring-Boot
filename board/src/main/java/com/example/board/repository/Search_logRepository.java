@@ -7,6 +7,6 @@ import com.example.board.entity.Search_logEntity;
 
 
 @Repository
-public interface Search_logRepository extends JpaRepository<Search_logEntity, String> {
+public interface Search_logRepository extends JpaRepository<Search_logEntity, Integer> {
     
 }

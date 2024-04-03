@@ -3,6 +3,8 @@ package com.example.board.dto.response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.example.board.dto.response.user.GetUserResponseDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
