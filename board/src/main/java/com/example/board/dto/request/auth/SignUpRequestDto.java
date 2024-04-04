@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SignUpRequestDto {
     @NotBlank //문자열 형태의 값을 필수로 잡겠다 / null x, 빈문자 x , 공백 x
-    @Pattern(regexp ="^[a-zA-Z0-9]*@([-.]?[a-zA-Z0-9]*\\.[a-zA-Z]{2,4}$")
+    @Pattern(regexp="^[a-zA-Z0-9]*@([-.]?[a-zA-Z0-9])*\\.[a-zA-Z]{2,4}$")
     private String email;
     
     @NotBlank
@@ -27,7 +27,7 @@ public class SignUpRequestDto {
     
     @NotBlank
     @Pattern(regexp = "^[0-9]{10,12}$")
-    private String telePhoneNumber;
+    private String telNumber;
     
     @NotBlank
     private String address;

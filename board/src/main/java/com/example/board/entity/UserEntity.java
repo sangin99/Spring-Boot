@@ -21,7 +21,7 @@ public class UserEntity {
     private String email;
     private String password;
     private String nickname;
-    private String telePhoneNumber;
+    private String telNumber;
     private String address;
     private String address_detail;
     private String profile_image_url;
@@ -31,7 +31,7 @@ public class UserEntity {
         this.email = dto.getEmail();
         this.password = dto.getPassword();
         this.nickname = dto.getNickname();
-        this.telePhoneNumber = dto.getTelePhoneNumber();
+        this.telNumber = dto.getTelNumber();
         this.address = dto.getAddress();
         this.address_detail = dto.getAddressDetail();
     }
