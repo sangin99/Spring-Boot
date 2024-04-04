@@ -43,6 +43,14 @@ base package (@SpringBootApplication 이 걸려있는 곳) > 이름대로 새 �
 04.03 _ 16:50
 SignUpRequestDto / ResponseDto
 
--> AuthService - singUp (dto)
+-> AuthService - singUp (매개변수명 : dto)
 -> AuthController - SignUp (requestBody)
 만들어보기
+
+>>> 출력 결과 (6개)
+* 중복된 이메일       - Service에서 발생
+* 중복된 닉네임       - Service에서 발생
+* 중복된 휴대전화번호 - Service에서 발생
+* 성공                - Service에서 발생
+* 데이터베이스 오류   - Service에서 발생
+* 유효성 검사 실패    -- Controller 에서 발생

@@ -27,7 +27,7 @@ public class SignUpRequestDto {
     
     @NotBlank
     @Pattern(regexp = "^[0-9]{10,12}$")
-    private String telNumber;
+    private String telePhoneNumber;
     
     @NotBlank
     private String address;
