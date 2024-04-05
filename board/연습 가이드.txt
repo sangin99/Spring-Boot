@@ -39,7 +39,7 @@ base package (@SpringBootApplication 이 걸려있는 곳) > 이름대로 새 �
 2. Service Interface 에 메서드 생성
 3. Controller 에 해당 API end point 메서드 작성
 
-====================================================
+==============================================================
 04.03 _ 16:50
 SignUpRequestDto / ResponseDto
 
@@ -54,3 +54,13 @@ SignUpRequestDto / ResponseDto
 * 성공                - Service에서 발생
 * 데이터베이스 오류   - Service에서 발생
 * 유효성 검사 실패    -- Controller 에서 발생
+
+================================================================
+04.04 _ 작업
+* (User > 닉네임 수정) 작업
+- dto > request > "PatchNicknameRequestDto" 새 파일 생성
+- UserController.java
+- UserService.java
+- UserServiceImplementation.java
+
+> PATCH : http://localhost:4100/api/v1/user/nickname  로 작업확인 

@@ -59,9 +59,4 @@ public class ResponseDto {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
     }
 
-    public static ResponseEntity<ResponseDto> vaildationFa() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'vaildationFa'");
-    }
-
 }
