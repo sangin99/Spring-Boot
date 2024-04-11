@@ -104,7 +104,7 @@ extends JpaRepository<StudentEntity, Integer> {
     //todo > 다른 예시 
     @Query (
         // value="SELECT * FROM student WHERE student_number = ?1 AND age > ?2" ,   //! . ?1 : 첫번째 매개변수에 넣겠다(studentNumber) / ?2 : 두번째 매개변수에 넣겠다 (age)
-        value = `
+        value = 
         "SELECT " +
             "student_number AS studentNumber, " +
             "name, " +
