@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -23,6 +24,10 @@ import io.jsonwebtoken.security.Keys;
 // - 서명 : 헤더와 페이로드를 합쳐서 인코딩하고 지정한 비밀키로 암호화한 데이터
 @Component
 public class JwtProvider {
+
+    // secretKey 의 값을 application.properties 로 지정
+    @Value("${jwt.secret-key}")
+    private String secretKey;
     
     //? JWT 생성
     public String create(String principle) {
@@ -30,7 +35,7 @@ public class JwtProvider {
         Date expiredDate = Date.from(Instant.now().plus(4, ChronoUnit.HOURS)); 
                                     //현재시간에 대한 Instant 생성.plus(4시간 뒤)
         // 비밀키 생성
-        Key key = Keys.hmacShaKeyFor("qwerasdfzxcvqwerasdfzxcvqwerasdfzxcvqwerasdfzxcv".getBytes(StandardCharsets.UTF_8));
+        Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
         // JWT 생성
         String jwt = Jwts.builder()
@@ -54,7 +59,7 @@ public class JwtProvider {
         // jwt 검증 결과로 나타나는 페이로드가 저장될 변수
         Claims claims = null;
         // 비밀키 생성
-        Key key = Keys.hmacShaKeyFor("qwerasdfzxcvqwerasdfzxcvqwerasdfzxcvqwerasdfzxcv".getBytes(StandardCharsets.UTF_8));
+        Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
         try {
             // 비밀키로 jwt 복호화 작업
@@ -69,6 +74,6 @@ public class JwtProvider {
         }
 
         return claims.getSubject();
-        
+
     }
 }
