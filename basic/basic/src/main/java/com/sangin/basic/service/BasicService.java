@@ -10,4 +10,5 @@ public interface BasicService {
     
 
     String getJwt(String priciple);
+    String jwtValidate(String jwt);
 }
