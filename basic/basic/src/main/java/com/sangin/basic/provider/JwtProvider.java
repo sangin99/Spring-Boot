@@ -33,7 +33,7 @@ public class JwtProvider {
     // 1. application.properties / application.yaml 에 등록
     // - application.properties 혹은 application.yaml 에 비밀키 작성
     // - @Value()를 이용하여 데이터를 가져옴
-    // - ※주의사항※ : application.properties / application.yaml 을 .gitignore 에 등록해야함 
+    // - 주의사항※ : application.properties / application.yaml 을 .gitignore 에 등록해야함 
     @Value("${jwt.secret-key}")
     private String secretKey;
 
