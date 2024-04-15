@@ -3,12 +3,17 @@ package com.sangin.basic.config;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.sangin.basic.filter.JwtAuthenticationFilter;
 
@@ -39,7 +44,7 @@ public class WebSecurityConfig {
         // - 일반적으로 매개변수로 메서드를 전달할 때 사용됨
         security
         // basic authentication 미사용 지정
-        .httpBasic(HttpBasicConfigurer::disable);
+        .httpBasic(HttpBasicConfigurer::disable)
         // session :
         // - 웹 애플리케이셔에서 사용자에 대한 정보 및 상태를 유지하기 위한 기술
         // - 서버측에서 사용자 정보 및 상태를 저장하는 방법
@@ -70,12 +75,41 @@ public class WebSecurityConfig {
         // - 공격자가 데이터베이스의 쿼리문을 직접 조작하여 데이터를 탈취하는 공격
         // XSS (Cross-Site Scripting) :
         // - 공격자가 웹 브라우저에 악성 스크립트를 작성하여 실행시키는 공격
-        .csrf(CsrfConfigurer::disable);
+        .csrf(CsrfConfigurer::disable)
+        // Spring Security 사용 이후에는 CORS 정책을 Security Filter Chain에 등록
+        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+        // 요청 URL의 패턴에 따라 리소스 접근 허용 범위를 지정
+        // - 인증되지 않은 사용자도 접근을 허용
+        // - 인증된 사용자 중 특정 권한을 가지고 있는 사용자만 접근을 허용
+        // - 인증된 사용자는 모두 접근을 허용
+        .authorizeHttpRequests(request -> request
+            // 특정 URL 패턴에 대한 요청은 인증되지 않은 사용자도 접근을 허용
+            .requestMatchers(HttpMethod.GET, "/auth/*").permitAll()
+            // 특정 URL 패턴에 대한 요청은 지정한 권한을 가지고 있는 사용자만 접근을 허용
+            .requestMatchers("/student/**").hasRole("STUDENT")
+            // 인증된 사용자는 모두 접근을 허용
+            .anyRequest().authenticated()
+        );
+
 
         // 우리가 생성한 jwtAuthenticationFilter 를 UsernamePasswordAuthenticationFilter 이전에 등록
         security.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return security.build();
+    }
+
+    @Bean
+    protected CorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedHeader("*");
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
     }
 
 }
