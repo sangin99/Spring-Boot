@@ -1,6 +1,7 @@
 package com.sangin.basic.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,8 +56,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             // 접근 주체에 대한 권한 지정
             List<GrantedAuthority> roles = AuthorityUtils.NO_AUTHORITIES;
-            if (subject.equals("student")) roles.add(new SimpleGrantedAuthority("ROLE_STUDENT"));
-
+            if (subject.equals("student")) {
+                roles = new ArrayList<>();
+                roles.add(new SimpleGrantedAuthority("ROLE_STUDENT"));
+            } 
+            
             // 3. principle 의 대한 정보를 controller 로 전달하기 위해 context 에 담기
 
             // 3-1. 인증된 사용자라는 의미의 UsernamePasswordAuthenticationToken 객체를 생성
