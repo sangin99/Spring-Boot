@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sangin.basic.dto.request.student.PatchStudentRequestDto;
 import com.sangin.basic.dto.request.student.PostStudentRequestDto;
+import com.sangin.basic.dto.request.student.SignInRequestDto;
 import com.sangin.basic.entity.StudentEntity;
 import com.sangin.basic.repository.StudentRepository;
 import com.sangin.basic.service.StudentService;
@@ -84,6 +85,34 @@ public class StudentServiceImplement implements StudentService {
         studentRepository.deleteById(studentNumber);
 
         return ResponseEntity.status(HttpStatus.OK).body("성공");
+    }
+
+    @Override
+    public ResponseEntity<String> signIn(SignInRequestDto dto) {
+       
+        try {
+
+            Integer studentNumber = dto.getStudentNumber();
+            StudentEntity studentEntity = studentRepository.findByStudentNumber(studentNumber);
+
+            if (studentEntity == null)
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("오류");
+
+            // 사용자가 입력한 패스워드와 암호화된 패스워드가 매치되는지 확인
+            String password = dto.getPassword();
+            String encodedPassword = studentEntity.getPassword();
+
+            boolean isEqualPassword = passwordEncoder.matches(password, encodedPassword);  // 데이터베이스에 있는 것은 암호화 되어있어 비교가 불가하기에 .matches 를 사용한다
+            if (!isEqualPassword)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("비밀번호 불일치");
+
+        } catch(Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("오류");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body("성공");
+
     }
 }
 

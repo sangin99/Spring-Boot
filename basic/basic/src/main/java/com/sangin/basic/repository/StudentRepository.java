@@ -122,4 +122,6 @@ extends JpaRepository<StudentEntity, Integer> {
         // @Param : student_number , age 값을 studentNumber , age 에 넣겠다
     );
 
+    StudentEntity findByStudentNumber(Integer studentNumber);
+
 }
