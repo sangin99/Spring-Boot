@@ -39,7 +39,7 @@ public class AuthController {
         // @Authentication :
         // - Security Context 에 있는 접근 주체의 이름을 가져올 수 있는 어노테이션
         // - 인증된 사용자는 해당 접근 주체의 이름을 가져옴
-        // - 인증되지 않은 사용자는 anonymousUser 라는 이름을 가져옴 
+        // - 인증되지 않은 사용자는 "anonymousUser" 라는 이름을 가져옴 
         @AuthenticationPrincipal String username
     ) {
         return "접근 주체 : " + username;
