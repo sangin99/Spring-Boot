@@ -32,7 +32,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// Spring boot 에서 OAuth2.0 인증을 사용할 수 있도록 하는 의존성
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	// MySQL 연결을 위한 connector 
+	// MySQL 연결을 위한 connector 의존성
 	runtimeOnly 'com.mysql:mysql-connector-j:8.0.33'
 	
 	// Jwt 생성 및 검증을 위한 의존성
