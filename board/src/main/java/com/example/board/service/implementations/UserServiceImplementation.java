@@ -10,6 +10,7 @@ import com.example.board.entity.UserEntity;
 import com.example.board.repository.UserRepository;
 import com.example.board.service.UserService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -73,6 +74,14 @@ public class UserServiceImplementation implements UserService {
             return ResponseDto.databaseError();
         }
 
+    }
+
+
+    @Override
+    public <PatchNicknameRequestDto> ResponseEntity<ResponseDto> patchNickname(
+            @Valid PatchNicknameRequestDto requestBody) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'patchNickname'");
     }
     
 

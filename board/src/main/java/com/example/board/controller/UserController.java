@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.board.dto.request.auth.user.PatchNicknameRequestDto;
 import com.example.board.dto.response.ResponseDto;
 import com.example.board.dto.response.user.GetUserResponseDto;
 import com.example.board.service.UserService;
@@ -19,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
-public class UserController {
+public class UserController<PatchNicknameRequestDto> {
     
     private final UserService userService;
 
