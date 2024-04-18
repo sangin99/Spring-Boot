@@ -14,6 +14,4 @@ public interface UserService {
 
     ResponseEntity<ResponseDto> patchNickname(@Valid PatchNicknameRequestDto requestBody);
 
-    <PatchNicknameRequestDto> ResponseEntity<ResponseDto> patchNickname(@Valid PatchNicknameRequestDto requestBody);
-
 }

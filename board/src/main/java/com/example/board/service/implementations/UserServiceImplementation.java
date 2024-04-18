@@ -76,13 +76,4 @@ public class UserServiceImplementation implements UserService {
 
     }
 
-
-    @Override
-    public <PatchNicknameRequestDto> ResponseEntity<ResponseDto> patchNickname(
-            @Valid PatchNicknameRequestDto requestBody) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'patchNickname'");
-    }
-    
-
 }
