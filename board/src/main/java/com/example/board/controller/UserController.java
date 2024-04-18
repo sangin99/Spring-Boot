@@ -38,5 +38,4 @@ public class UserController<PatchNicknameRequestDto> {
         ResponseEntity<ResponseDto> response = userService.patchNickname(requestBody);
         return response;
     }
-
 }
